@@ -1,0 +1,66 @@
+<!DOCTYPE html> 
+<html> 
+  
+<head> 
+    <title>Read Text File</title> 
+		<link rel="stylesheet" type ="text/css" href ="style.css">
+</head> 
+  <div class="main">
+
+	<ul>	
+		<li><a href ="index.html">Home</a></li>	
+	</ul>
+	
+	<h1> ***I havent been able to completely finish the project***</h1>
+	<h2> To read textfile press Choosefile and select list.text</h2>
+	<div class="title">
+	<p>MakeMeLaugh</p>
+	
+	</div>
+<body> 
+    <input type="file" name="inputfile"
+            id="inputfile"> 
+    <br> 
+   	<div class="background">
+	<img  src="images/background.jpg" alt="logo">
+	
+    <ul id="myList"></ul>
+      	<div id="speech-bubble"></div>
+			
+	</div>
+
+    <script type="text/javascript"> 
+	document.getElementById('inputfile').onchange = function(){
+
+  var file = this.files[0];
+
+  var reader = new FileReader();
+  reader.onload = function(progressEvent){
+    // Entire file
+    console.log(this.result);
+	//document.getElementById('output').textContent=this.result;
+
+    // By lines
+    var lines = this.result.split('\n');
+	var i = 0;
+	 console.log(lines.length);
+    for(var line =0 ; line < lines.length-1; line++){
+	
+      //console.log(lines[line]);
+	  console.log(lines[i])
+	  
+	  const myList=document.getElementById('speech-bubble');
+	  
+	  let newListItem=document.createElement('li');
+	  newListItem.textContent=lines[i];
+	  myList.appendChild(newListItem);
+	  
+	  i++;
+    }
+  };
+  reader.readAsText(file);
+};
+    </script> 
+</body> 
+  
+</html>
